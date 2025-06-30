@@ -549,7 +549,7 @@ def email(receiver):
     message = MIMEMultipart()
 
     message['Subject'] = '나라장터 관련 키워드 네이버 검색결과'
-    message['From'] = formataddr(('RA팀', "dailyinfo@pkf.kr"))
+    message['From'] = formataddr(('###', "###@abc.com"))
     message['To'] = formataddr(receiver)
 
     template = Template("""<html>
@@ -563,7 +563,6 @@ def email(receiver):
                                         회계연도, 법인세, 국세, 지방세, 세무, 전략, 감사체계, 감사품질, 직무평가, 감사정보, 감사행정, 감사모니터링, 정보보호</b><br>
                                         총 34개 입니다.<br><br>
                                         감사합니다.<br>
-                                        RA팀 드림.
                                     </body>
                                 </html>""")
 
@@ -589,8 +588,8 @@ def email_to_admin(receiver):
     message = MIMEMultipart()
 
     message['Subject'] = 'crawl.py 이메일 발송 오류'
-    message['From'] = formataddr(("RA팀", "dailyinfo@pkf.kr"))
-    message['To'] = formataddr(("우혜진", "haejin.woo@pkf.kr"))
+    message['From'] = formataddr(("###", "###o@abc.com"))
+    message['To'] = formataddr(("###", "###@abc.com"))
 
     template = Template(f"<html><body> {receiver} 에서 발송 멈춤. </body></html>")
 
@@ -598,16 +597,15 @@ def email_to_admin(receiver):
     mime_msg = MIMEText(str_msg, 'html')
     message.attach(mime_msg)
 
-    with smtplib.SMTP_SSL('mail.pkf.kr', 465) as server:
+    with smtplib.SMTP_SSL('smtp 메일 주소', 465) as server:
         server.ehlo()
-        server.login('dailyinfo@pkf.kr', '1111')
+        server.login('abcd', '1111')
         server.send_message(message)
 
     logging.info("Message sent to admin.")
 
 if __name__ == "__main__":
-    list1 = [('올파트너스', 'sh_allpartners@pkf.kr'), ('신동복', 'dongbok.shin@pkf.kr'), ('김학수', 'haksoo.kim@pkf.kr'), ('최준기', 'juneki.choi@pkf.kr'), ('오영주', 'youngju.oh@pkf.kr'), ('윤영광', 'youngkwang.yoon@pkf.kr'), ('이예원', 'yewon.lee763@pkf.kr'),\
-            ('박성래', 'sungrae.park@pkf.kr'), ('이재덕', 'jaeduk.lee@pkf.kr'), ('최종규', 'jonggyu.choi@pkf.kr'), ('신용선', 'yongsun.shin@pkf.kr'), ('이재인', 'jaein.lee@pkf.kr'), ('이한비', 'hanbi.lee@pkf.kr')]
+    list1 = [('###', '###@abc.com')]
     
     g2b()
     news()
